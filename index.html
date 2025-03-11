@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Ngô Quang Minh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
         }
         
         body {
@@ -17,189 +20,403 @@
             flex-direction: column;
             width: 100%;
             min-height: 100vh;
+            background-color: #f4f7fc;
+            line-height: 1.6;
         }
         
         .cv-container {
             display: flex;
+            flex-direction: row;
             width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
         }
         
         .left-column {
             width: 30%;
-            background-color: #1a3b57;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
             color: white;
-            padding: 30px;
+            padding: 40px 30px;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
         }
         
         .right-column {
             width: 70%;
-            padding: 30px;
+            padding: 40px;
+            background: linear-gradient(to right, #f9f9f9 0%, #ffffff 100%);
         }
         
         .profile-pic {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             overflow: hidden;
-            margin: 0 auto 20px;
-            border: 3px solid white;
+            margin: 0 auto 30px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            background-color: #fff;
+            transition: all 0.3s ease;
         }
         
         .profile-pic img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-pic:hover {
+            transform: scale(1.05);
+            border: 4px solid rgba(255, 255, 255, 0.6);
+        }
+        
+        .profile-pic:hover img {
+            transform: scale(1.1);
         }
         
         .section-title {
-            margin: 30px 0 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 35px 0 20px 0;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
             padding-bottom: 10px;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 18px;
-        }
-        
-        .right-column .section-title {
-            border-bottom: 1px solid #333;
-            margin-top: 40px;
-        }
-        
-        .contact-item {
-            margin: 15px 0;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
         }
         
-        .contact-item i {
+        .section-title i {
             margin-right: 10px;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .right-column .section-title {
+            border-bottom: 2px solid #e0e6ed;
+            color: #2c3e50;
+            margin-top: 40px;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .right-column .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #3498db;
+        }
+        
+        .right-column .section-title i {
+            color: #3498db;
+        }
+        
+        .contact-item {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
+            color: #3498db;
+        }
+        
+        .contact-item i {
+            margin-right: 15px;
             width: 20px;
             text-align: center;
+            color: rgba(255, 255, 255, 0.8);
         }
         
         .education-item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 2px;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .education-item::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: -4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: white;
+        }
+        
+        .school-year {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 5px;
+            font-weight: 500;
         }
         
         .school-name {
-            font-weight: bold;
-            margin-bottom: 5px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
         }
         
         .degree {
             margin-left: 15px;
-            list-style-type: disc;
-            margin-top: 5px;
+            list-style-type: none;
+            margin-top: 8px;
+            font-size: 14px;
+        }
+        
+        .degree li {
+            margin-bottom: 5px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .degree li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: rgba(255, 255, 255, 0.7);
         }
         
         .skill-item {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin: 10px 0;
+            margin: 12px 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateX(5px);
+            color: #3498db;
+        }
+        
+        .skill-item::before {
+            content: '▹';
+            color: #3498db;
+            margin-right: 10px;
         }
         
         .language-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin: 10px 0;
+            margin: 12px 0;
+            transition: all 0.3s ease;
         }
         
-        .stars {
-            color: gold;
+        .language-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .language-level {
+            font-size: 14px;
+            padding: 2px 8px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
         }
         
         .name-title {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .name-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            border-radius: 2px;
         }
         
         .name {
-            font-size: 28px;
-            margin-bottom: 5px;
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #2c3e50;
+            letter-spacing: 1px;
         }
         
         .position {
-            color: #666;
-            font-size: 18px;
+            color: #3498db;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
         
         .career-objective {
-            line-height: 1.6;
-            margin-bottom: 30px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            color: #536b7c;
+            padding-left: 15px;
+            border-left: 4px solid #3498db;
+            background-color: #f9fafc;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
         }
         
-        .experience-item {
-            margin-bottom: 30px;
-        }
-        
-        .company-date {
+        .skills-container {
             display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-        
-        .company {
-            font-weight: bold;
-        }
-        
-        .job-title {
-            margin-bottom: 10px;
-        }
-        
-        .job-description {
-            margin-left: 20px;
-        }
-        
-        .job-description li {
-            margin-bottom: 10px;
-            line-height: 1.5;
-        }
-        
-        .other-skills {
+            flex-wrap: wrap;
             margin-top: 20px;
         }
         
-        .other-skills li {
-            margin-bottom: 5px;
+        .skill-tag {
+            background-color: #e9f0f8;
+            color: #2c3e50;
+            padding: 8px 15px;
+            border-radius: 30px;
+            margin: 0 10px 10px 0;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .skill-tag:hover {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .project-section {
+            margin-top: 30px;
+        }
+        
+        .project-card {
+            background-color: #f9fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid #3498db;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .project-description {
+            color: #536b7c;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .project-tag {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: #3498db;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin: 0 8px 8px 0;
+            font-size: 12px;
         }
         
         /* Contact Form Styles */
         .contact-form-section {
-            padding: 40px;
-            background-color: #f5f5f5;
-            margin-top: 30px;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, #f4f7fc 0%, #e9f0f8 100%);
+            margin-top: 0;
         }
         
         .contact-form-container {
             max-width: 800px;
             margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
         .contact-form-title {
             text-align: center;
-            font-size: 24px;
-            margin-bottom: 30px;
-            color: #1a3b57;
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            position: relative;
+            font-weight: 600;
+        }
+        
+        .contact-form-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            border-radius: 2px;
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
         }
         
         input[type="text"],
         input[type="email"],
         textarea {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            padding: 12px 15px;
+            border: 1px solid #d0d9e5;
+            border-radius: 6px;
             font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #f9fafc;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.1);
+            outline: none;
+            background-color: white;
         }
         
         textarea {
@@ -208,58 +425,105 @@
         }
         
         .error-message {
-            color: red;
+            color: #e53e3e;
             font-size: 14px;
             margin-top: 5px;
             display: none;
         }
         
         .submit-btn {
-            background-color: #1a3b57;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 14px 30px;
             font-size: 16px;
-            border-radius: 4px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
         }
         
         .submit-btn:hover {
-            background-color: #2c506e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
         }
         
         .success-message {
             display: none;
-            background-color: #4CAF50;
+            background-color: #48bb78;
             color: white;
             padding: 15px;
             text-align: center;
-            border-radius: 4px;
+            border-radius: 6px;
             margin-top: 20px;
+            animation: fadeIn 0.5s ease;
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.3);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         /* Navigation */
         .nav-tabs {
             display: flex;
             list-style: none;
-            background-color: #1a3b57;
-            margin-bottom: 0;
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            margin: 0;
+            padding: 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
         
         .nav-tabs li {
-            padding: 15px 20px;
+            padding: 18px 25px;
             cursor: pointer;
             color: white;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-tabs li i {
+            margin-right: 8px;
+            transition: all 0.3s ease;
         }
         
         .nav-tabs li.active {
-            background-color: #2c506e;
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 -3px 0 white inset;
         }
         
         .nav-tabs li:hover {
-            background-color: #2c506e;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-tabs li:hover i {
+            transform: translateY(-3px);
+        }
+        
+        .nav-tabs li::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-tabs li:hover::after {
+            width: 80%;
         }
         
         .tab-content {
@@ -268,14 +532,30 @@
         
         .tab-content.active {
             display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cv-container {
+                flex-direction: column;
+            }
+            
+            .left-column, .right-column {
+                width: 100%;
+            }
+            
+            .left-column {
+                clip-path: none;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation Tabs -->
     <ul class="nav-tabs">
-        <li class="active" onclick="openTab('cv-tab')">CV</li>
-        <li onclick="openTab('contact-tab')">Liên Hệ</li>
+        <li class="active" onclick="openTab('cv-tab')"><i class="fas fa-user"></i> CV</li>
+        <li onclick="openTab('contact-tab')"><i class="fas fa-envelope"></i> Liên Hệ</li>
     </ul>
 
     <!-- CV Tab -->
@@ -283,26 +563,26 @@
         <div class="cv-container">
             <div class="left-column">
                 <div class="profile-pic">
-                    <!-- Placeholder for profile picture -->
+                    <img src="/api/placeholder/400/400" alt="Profile Picture">
                 </div>
                 
-                <div class="section-title">LIÊN LẠC</div>
+                <div class="section-title"><i class="fas fa-address-card"></i> LIÊN LẠC</div>
                 <div class="contact-item">
-                    <i>📱</i> 0866418352
+                    <i class="fas fa-mobile-alt"></i> 0866418352
                 </div>
                 <div class="contact-item">
-                    <i>✉️</i> d90nqm@gmail.com
+                    <i class="fas fa-envelope"></i> d90nqm@gmail.com
                 </div>
                 <div class="contact-item">
-                    <i>🔗</i> github.com/d90nqm
+                    <i class="fab fa-github"></i> github.com/d90nqm
                 </div>
                 <div class="contact-item">
-                    <i>📍</i> Hà Đông, Hà Nội
+                    <i class="fas fa-map-marker-alt"></i> Hà Đông, Hà Nội
                 </div>
                 
-                <div class="section-title">HỌC VẤN</div>
+                <div class="section-title"><i class="fas fa-graduation-cap"></i> HỌC VẤN</div>
                 <div class="education-item">
-                    <div>2022 - 2027</div>
+                    <div class="school-year">2022 - 2027</div>
                     <div class="school-name">HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG</div>
                     <ul class="degree">
                         <li>Chuyên ngành: Công nghệ Phần mềm</li>
@@ -310,21 +590,15 @@
                     </ul>
                 </div>
                 
-                <div class="section-title">TIN HỌC</div>
-                <div class="skill-item">
-                    <div>HTML, CSS, JavaScript</div>
-                </div>
-                <div class="skill-item">
-                    <div>Python</div>
-                </div>
-                <div class="skill-item">
-                    <div>Software debugging</div>
-                </div>
+                <div class="section-title"><i class="fas fa-laptop-code"></i> TIN HỌC</div>
+                <div class="skill-item">HTML, CSS, JavaScript</div>
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Software debugging</div>
                 
-                <div class="section-title">NGOẠI NGỮ</div>
+                <div class="section-title"><i class="fas fa-language"></i> NGOẠI NGỮ</div>
                 <div class="language-item">
                     <div>Tiếng Anh</div>
-                    <div>IELTS 6.5</div>
+                    <div class="language-level">IELTS 6.5</div>
                 </div>
             </div>
             
@@ -334,35 +608,60 @@
                     <div class="position">LẬP TRÌNH VIÊN</div>
                 </div>
                 
-                <div class="section-title">MỤC TIÊU NGHỀ NGHIỆP</div>
+                <div class="section-title"><i class="fas fa-bullseye"></i> MỤC TIÊU NGHỀ NGHIỆP</div>
                 <div class="career-objective">
                     Tôi là sinh viên Công nghệ Thông tin tại Học viện Công nghệ Bưu chính Viễn thông. Tôi có niềm đam mê với lập trình và phát triển phần mềm, luôn chủ động học hỏi và tham gia các dự án thực tế để nâng cao kỹ năng. Mong muốn tìm kiếm cơ hội thực tập để áp dụng kiến thức vào thực tế và phát triển sự nghiệp trong lĩnh vực công nghệ.
                 </div>
                 
-                <div class="section-title">KỸ NĂNG MỀM</div>
-                <ul class="other-skills">
-                    <li>Ham học hỏi</li>
-                    <li>Chủ động trong công việc</li>
-                    <li>Teamwork</li>
-                    <li>Có trách nhiệm</li>
-                    <li>Xử lý vấn đề hiệu quả</li>
-                </ul>
+                <div class="section-title"><i class="fas fa-user-cog"></i> KỸ NĂNG MỀM</div>
+                <div class="skills-container">
+                    <div class="skill-tag">Ham học hỏi</div>
+                    <div class="skill-tag">Chủ động trong công việc</div>
+                    <div class="skill-tag">Teamwork</div>
+                    <div class="skill-tag">Có trách nhiệm</div>
+                    <div class="skill-tag">Xử lý vấn đề hiệu quả</div>
+                </div>
                 
-                <div class="section-title">CHUYÊN MÔN</div>
-                <ul class="other-skills">
-                    <li>HTML, CSS, JavaScript, Python</li>
-                    <li>Software debugging</li>
-                    <li>Sửa chữa phần cứng</li>
-                    <li>Duy trì hệ thống mạng</li>
-                </ul>
+                <div class="section-title"><i class="fas fa-tools"></i> CHUYÊN MÔN</div>
+                <div class="skills-container">
+                    <div class="skill-tag">HTML/CSS/JavaScript</div>
+                    <div class="skill-tag">Python</div>
+                    <div class="skill-tag">Software debugging</div>
+                    <div class="skill-tag">Sửa chữa phần cứng</div>
+                    <div class="skill-tag">Duy trì hệ thống mạng</div>
+                </div>
                 
-                <div class="section-title">CHỨNG CHỈ</div>
-                <ul class="other-skills">
-                    <li>IELTS 6.5</li>
-                </ul>
+                <div class="section-title"><i class="fas fa-certificate"></i> CHỨNG CHỈ</div>
+                <div class="skills-container">
+                    <div class="skill-tag">IELTS 6.5</div>
+                </div>
                 
-                <div class="section-title">DỰ ÁN</div>
-                <!-- Here you can add project information if available -->
+                <div class="section-title"><i class="fas fa-tasks"></i> DỰ ÁN</div>
+                
+                <div class="project-card">
+                    <div class="project-title">Ứng dụng quản lý học tập</div>
+                    <div class="project-description">
+                        Phát triển ứng dụng web giúp sinh viên quản lý lịch học, bài tập và kết quả học tập. Sử dụng HTML, CSS, JavaScript và Python Flask.
+                    </div>
+                    <div class="project-tags">
+                        <div class="project-tag">HTML/CSS</div>
+                        <div class="project-tag">JavaScript</div>
+                        <div class="project-tag">Python</div>
+                        <div class="project-tag">Flask</div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-title">Website cá nhân</div>
+                    <div class="project-description">
+                        Thiết kế và phát triển website cá nhân để giới thiệu bản thân và trưng bày các dự án. Tập trung vào thiết kế responsive và UX/UI.
+                    </div>
+                    <div class="project-tags">
+                        <div class="project-tag">HTML/CSS</div>
+                        <div class="project-tag">JavaScript</div>
+                        <div class="project-tag">Responsive Design</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -374,34 +673,34 @@
                 <h2 class="contact-form-title">Liên Hệ Với Tôi</h2>
                 <form id="contactForm">
                     <div class="form-group">
-                        <label for="name">Họ và tên</label>
+                        <label for="name"><i class="fas fa-user"></i> Họ và tên</label>
                         <input type="text" id="name" name="name" placeholder="Nhập họ và tên của bạn">
-                        <div id="nameError" class="error-message">Vui lòng nhập họ và tên</div>
+                        <div id="nameError" class="error-message"><i class="fas fa-exclamation-circle"></i> Vui lòng nhập họ và tên</div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email</label>
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
                         <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email của bạn">
-                        <div id="emailError" class="error-message">Vui lòng nhập địa chỉ email hợp lệ</div>
+                        <div id="emailError" class="error-message"><i class="fas fa-exclamation-circle"></i> Vui lòng nhập địa chỉ email hợp lệ</div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="subject">Tiêu đề</label>
+                        <label for="subject"><i class="fas fa-heading"></i> Tiêu đề</label>
                         <input type="text" id="subject" name="subject" placeholder="Nhập tiêu đề tin nhắn">
-                        <div id="subjectError" class="error-message">Vui lòng nhập tiêu đề</div>
+                        <div id="subjectError" class="error-message"><i class="fas fa-exclamation-circle"></i> Vui lòng nhập tiêu đề</div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Nội dung</label>
+                        <label for="message"><i class="fas fa-comment-alt"></i> Nội dung</label>
                         <textarea id="message" name="message" placeholder="Nhập nội dung tin nhắn"></textarea>
-                        <div id="messageError" class="error-message">Vui lòng nhập nội dung tin nhắn</div>
+                        <div id="messageError" class="error-message"><i class="fas fa-exclamation-circle"></i> Vui lòng nhập nội dung tin nhắn</div>
                     </div>
                     
-                    <button type="submit" class="submit-btn">Gửi tin nhắn</button>
+                    <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Gửi tin nhắn</button>
                 </form>
                 
                 <div id="successMessage" class="success-message">
-                    Tin nhắn của bạn đã được gửi thành công! Tôi sẽ liên hệ lại với bạn sớm nhất có thể.
+                    <i class="fas fa-check-circle"></i> Tin nhắn của bạn đã được gửi thành công! Tôi sẽ liên hệ lại với bạn sớm nhất có thể.
                 </div>
             </div>
         </div>
@@ -426,64 +725,59 @@
             document.getElementById(tabId).classList.add('active');
             
             // Add active class to the clicked tab
-            event.currentTarget.classList.add('active');
+            for (let i = 0; i < tabs.length; i++) {
+                if (tabs[i].getAttribute('onclick') === `openTab('${tabId}')`) {
+                    tabs[i].classList.add('active');
+                }
+            }
         }
         
         // Form validation
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let valid = true;
             
-            let isValid = true;
-            
-            // Validate name
+            // Name validation
             const name = document.getElementById('name').value.trim();
-            if (name === '') {
+            if (!name) {
                 document.getElementById('nameError').style.display = 'block';
-                isValid = false;
+                valid = false;
             } else {
                 document.getElementById('nameError').style.display = 'none';
             }
             
-            // Validate email
+            // Email validation
             const email = document.getElementById('email').value.trim();
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (email === '' || !emailRegex.test(email)) {
+            if (!email || !emailRegex.test(email)) {
                 document.getElementById('emailError').style.display = 'block';
-                isValid = false;
+                valid = false;
             } else {
                 document.getElementById('emailError').style.display = 'none';
             }
             
-            // Validate subject
+            // Subject validation
             const subject = document.getElementById('subject').value.trim();
-            if (subject === '') {
+            if (!subject) {
                 document.getElementById('subjectError').style.display = 'block';
-                isValid = false;
+                valid = false;
             } else {
                 document.getElementById('subjectError').style.display = 'none';
             }
             
-            // Validate message
+            // Message validation
             const message = document.getElementById('message').value.trim();
-            if (message === '') {
+            if (!message) {
                 document.getElementById('messageError').style.display = 'block';
-                isValid = false;
+                valid = false;
             } else {
                 document.getElementById('messageError').style.display = 'none';
             }
             
             // If form is valid, show success message
-            if (isValid) {
-                // Simulate sending email
-                console.log('Email would be sent with:', {
-                    name, email, subject, message
-                });
-                
-                // Show success message
-                document.getElementById('successMessage').style.display = 'block';
-                
-                // Reset form
+            if (valid) {
                 document.getElementById('contactForm').reset();
+                document.getElementById('successMessage').style.display = 'block';
                 
                 // Hide success message after 5 seconds
                 setTimeout(function() {
