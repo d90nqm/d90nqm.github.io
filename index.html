@@ -5,136 +5,491 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Ngô Quang Minh</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
-        .container {
-            width: 80%;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .header {
-            text-align: center;
-            padding: 10px 0;
-            background: #333;
-            color: white;
-        }
-        .section {
-            margin: 20px 0;
-        }
-        .section h2 {
-            border-bottom: 2px solid #333;
-            padding-bottom: 5px;
-        }
-        .info p {
-            margin: 5px 0;
-        }
-        .contact-form {
-            max-width: 500px;
-            margin: auto;
-        }
-        .contact-form label, .contact-form input, .contact-form textarea {
-            display: block;
+        
+        body {
+            display: flex;
+            flex-direction: column;
             width: 100%;
+            min-height: 100vh;
+        }
+        
+        .cv-container {
+            display: flex;
+            width: 100%;
+        }
+        
+        .left-column {
+            width: 30%;
+            background-color: #1a3b57;
+            color: white;
+            padding: 30px;
+        }
+        
+        .right-column {
+            width: 70%;
+            padding: 30px;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 3px solid white;
+        }
+        
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .section-title {
+            margin: 30px 0 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .right-column .section-title {
+            border-bottom: 1px solid #333;
+            margin-top: 40px;
+        }
+        
+        .contact-item {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .education-item {
+            margin-bottom: 20px;
+        }
+        
+        .school-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .degree {
+            margin-left: 15px;
+            list-style-type: disc;
+            margin-top: 5px;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        
+        .language-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        
+        .stars {
+            color: gold;
+        }
+        
+        .name-title {
+            margin-bottom: 20px;
+        }
+        
+        .name {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .position {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .career-objective {
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .experience-item {
+            margin-bottom: 30px;
+        }
+        
+        .company-date {
+            display: flex;
+            justify-content: space-between;
             margin-bottom: 10px;
         }
-        .contact-form button {
-            background: #333;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
+        
+        .company {
+            font-weight: bold;
         }
-        .contact-form button:hover {
-            background: #555;
+        
+        .job-title {
+            margin-bottom: 10px;
+        }
+        
+        .job-description {
+            margin-left: 20px;
+        }
+        
+        .job-description li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        
+        .other-skills {
+            margin-top: 20px;
+        }
+        
+        .other-skills li {
+            margin-bottom: 5px;
+        }
+        
+        /* Contact Form Styles */
+        .contact-form-section {
+            padding: 40px;
+            background-color: #f5f5f5;
+            margin-top: 30px;
+        }
+        
+        .contact-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-form-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #1a3b57;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .submit-btn {
+            background-color: #1a3b57;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2c506e;
+        }
+        
+        .success-message {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        
+        /* Navigation */
+        .nav-tabs {
+            display: flex;
+            list-style: none;
+            background-color: #1a3b57;
+            margin-bottom: 0;
+        }
+        
+        .nav-tabs li {
+            padding: 15px 20px;
+            cursor: pointer;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-tabs li.active {
+            background-color: #2c506e;
+        }
+        
+        .nav-tabs li:hover {
+            background-color: #2c506e;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Ngô Quang Minh</h1>
-            <p>Hà Đông, Hà Nội | 0866418352 | d90nqm@gmail.com | github.com/d90nqm</p>
-        </div>
-        
-        <div class="section">
-            <h2>Giới thiệu bản thân</h2>
-            <p>Tôi là sinh viên Công nghệ Thông tin tại Học viện Công nghệ Bưu chính Viễn thông. Tôi có niềm đam mê với lập trình và phát triển phần mềm, luôn chủ động học hỏi và tham gia các dự án thực tế để nâng cao kỹ năng. Mong muốn tìm kiếm cơ hội thực tập để áp dụng kiến thức vào thực tế và phát triển sự nghiệp trong lĩnh vực công nghệ.</p>
-        </div>
-        <div class="section">
-            <h2>Học vấn</h2>
-            <p>Học viện Công nghệ Bưu chính Viễn thông (2022 - 2027)</p>
-            <p><strong>Chuyên ngành:</strong> Công nghệ Phần mềm</p>
-            <p><strong>GPA:</strong> 3.0/4.0</p>
-        </div>
-        <div class="section">
-            <h2>Kỹ năng mềm</h2>
-            <ul>
-                <li>Ham học hỏi</li>
-                <li>Chủ động trong công việc</li>
-                <li>Teamwork</li>
-                <li>Có trách nhiệm</li>
-                <li>Xử lý vấn đề hiệu quả</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Chuyên môn</h2>
-            <ul>
-                <li>HTML, CSS, JavaScript, Python</li>
-                <li>Software debugging</li>
-                <li>Sửa chữa phần cứng</li>
-                <li>Duy trì hệ thống mạng</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Chứng chỉ</h2>
-            <ul>
-                <li>IELTS 6.5</li>
-            </ul>
-        </div>
-        <div class="section">
-            <h2>Dự án</h2>
-            <p>(Để trống)</p>
-        </div>
-        
-        <div class="section">
-            <h2>Liên hệ</h2>
-            <form class="contact-form" id="contactForm">
-                <label for="name">Họ và Tên:</label>
-                <input type="text" id="name" name="name" required>
+    <!-- Navigation Tabs -->
+    <ul class="nav-tabs">
+        <li class="active" onclick="openTab('cv-tab')">CV</li>
+        <li onclick="openTab('contact-tab')">Liên Hệ</li>
+    </ul>
+
+    <!-- CV Tab -->
+    <div id="cv-tab" class="tab-content active">
+        <div class="cv-container">
+            <div class="left-column">
+                <div class="profile-pic">
+                    <!-- Placeholder for profile picture -->
+                </div>
                 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <div class="section-title">LIÊN LẠC</div>
+                <div class="contact-item">
+                    <i>📱</i> 0866418352
+                </div>
+                <div class="contact-item">
+                    <i>✉️</i> d90nqm@gmail.com
+                </div>
+                <div class="contact-item">
+                    <i>🔗</i> github.com/d90nqm
+                </div>
+                <div class="contact-item">
+                    <i>📍</i> Hà Đông, Hà Nội
+                </div>
                 
-                <label for="message">Nội dung:</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
+                <div class="section-title">HỌC VẤN</div>
+                <div class="education-item">
+                    <div>2022 - 2027</div>
+                    <div class="school-name">HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG</div>
+                    <ul class="degree">
+                        <li>Chuyên ngành: Công nghệ Phần mềm</li>
+                        <li>GPA: 3.0/4.0</li>
+                    </ul>
+                </div>
                 
-                <button type="submit">Gửi</button>
-            </form>
-            <p id="confirmation" style="color: green; display: none;">Cảm ơn bạn! Tin nhắn đã được gửi.</p>
+                <div class="section-title">TIN HỌC</div>
+                <div class="skill-item">
+                    <div>HTML, CSS, JavaScript</div>
+                </div>
+                <div class="skill-item">
+                    <div>Python</div>
+                </div>
+                <div class="skill-item">
+                    <div>Software debugging</div>
+                </div>
+                
+                <div class="section-title">NGOẠI NGỮ</div>
+                <div class="language-item">
+                    <div>Tiếng Anh</div>
+                    <div>IELTS 6.5</div>
+                </div>
+            </div>
+            
+            <div class="right-column">
+                <div class="name-title">
+                    <div class="name">NGÔ QUANG MINH</div>
+                    <div class="position">LẬP TRÌNH VIÊN</div>
+                </div>
+                
+                <div class="section-title">MỤC TIÊU NGHỀ NGHIỆP</div>
+                <div class="career-objective">
+                    Tôi là sinh viên Công nghệ Thông tin tại Học viện Công nghệ Bưu chính Viễn thông. Tôi có niềm đam mê với lập trình và phát triển phần mềm, luôn chủ động học hỏi và tham gia các dự án thực tế để nâng cao kỹ năng. Mong muốn tìm kiếm cơ hội thực tập để áp dụng kiến thức vào thực tế và phát triển sự nghiệp trong lĩnh vực công nghệ.
+                </div>
+                
+                <div class="section-title">KỸ NĂNG MỀM</div>
+                <ul class="other-skills">
+                    <li>Ham học hỏi</li>
+                    <li>Chủ động trong công việc</li>
+                    <li>Teamwork</li>
+                    <li>Có trách nhiệm</li>
+                    <li>Xử lý vấn đề hiệu quả</li>
+                </ul>
+                
+                <div class="section-title">CHUYÊN MÔN</div>
+                <ul class="other-skills">
+                    <li>HTML, CSS, JavaScript, Python</li>
+                    <li>Software debugging</li>
+                    <li>Sửa chữa phần cứng</li>
+                    <li>Duy trì hệ thống mạng</li>
+                </ul>
+                
+                <div class="section-title">CHỨNG CHỈ</div>
+                <ul class="other-skills">
+                    <li>IELTS 6.5</li>
+                </ul>
+                
+                <div class="section-title">DỰ ÁN</div>
+                <!-- Here you can add project information if available -->
+            </div>
         </div>
     </div>
-    
+
+    <!-- Contact Tab -->
+    <div id="contact-tab" class="tab-content">
+        <div class="contact-form-section">
+            <div class="contact-form-container">
+                <h2 class="contact-form-title">Liên Hệ Với Tôi</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Họ và tên</label>
+                        <input type="text" id="name" name="name" placeholder="Nhập họ và tên của bạn">
+                        <div id="nameError" class="error-message">Vui lòng nhập họ và tên</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email của bạn">
+                        <div id="emailError" class="error-message">Vui lòng nhập địa chỉ email hợp lệ</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Tiêu đề</label>
+                        <input type="text" id="subject" name="subject" placeholder="Nhập tiêu đề tin nhắn">
+                        <div id="subjectError" class="error-message">Vui lòng nhập tiêu đề</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Nội dung</label>
+                        <textarea id="message" name="message" placeholder="Nhập nội dung tin nhắn"></textarea>
+                        <div id="messageError" class="error-message">Vui lòng nhập nội dung tin nhắn</div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Gửi tin nhắn</button>
+                </form>
+                
+                <div id="successMessage" class="success-message">
+                    Tin nhắn của bạn đã được gửi thành công! Tôi sẽ liên hệ lại với bạn sớm nhất có thể.
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            
-            let name = document.getElementById("name").value.trim();
-            let email = document.getElementById("email").value.trim();
-            let message = document.getElementById("message").value.trim();
-            
-            if (name === "" || email === "" || message === "") {
-                alert("Vui lòng nhập đầy đủ thông tin.");
-                return;
+        // Tab switching functionality
+        function openTab(tabId) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
             }
             
-            document.getElementById("confirmation").style.display = "block";
-            document.getElementById("contactForm").reset();
+            // Remove active class from all tabs
+            const tabs = document.getElementsByClassName('nav-tabs')[0].getElementsByTagName('li');
+            for (let i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            
+            // Show the selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to the clicked tab
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Form validation
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            let isValid = true;
+            
+            // Validate name
+            const name = document.getElementById('name').value.trim();
+            if (name === '') {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('nameError').style.display = 'none';
+            }
+            
+            // Validate email
+            const email = document.getElementById('email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === '' || !emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+            
+            // Validate subject
+            const subject = document.getElementById('subject').value.trim();
+            if (subject === '') {
+                document.getElementById('subjectError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('subjectError').style.display = 'none';
+            }
+            
+            // Validate message
+            const message = document.getElementById('message').value.trim();
+            if (message === '') {
+                document.getElementById('messageError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('messageError').style.display = 'none';
+            }
+            
+            // If form is valid, show success message
+            if (isValid) {
+                // Simulate sending email
+                console.log('Email would be sent with:', {
+                    name, email, subject, message
+                });
+                
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset form
+                document.getElementById('contactForm').reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(function() {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            }
         });
     </script>
 </body>
